@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 243, 244, 246;
+}
+
+@layer base {
+  html, body {
+    @apply h-full;
+  }
+  
+  body {
+    @apply text-gray-900;
+    background: rgb(var(--background-rgb));
+  }
+
+  svg {
+    @apply w-5 h-5;
+  }
+}
+
+@layer components {
+  .sidebar-link {
+    @apply flex items-center p-2 rounded-lg hover:bg-gray-800 transition-colors;
+  }
+}

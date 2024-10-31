@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id                      String    @id @default(cuid())
+  name                    String
+  description            String
+  productBrief           String
+  techStack              String
+  codeGuidelines         String
+  targetAudience         String
+  keyFeatures            String
+  successMetrics         String
+  timeline               String
+  budget                 String
+  teamSize               String
+  methodology            String
+  integrationRequirements String
+  securityRequirements   String
+  performanceRequirements String
+  accessibilityRequirements String
+  testingRequirements    String
+  deploymentStrategy     String
+  maintenancePlan        String
+  constraints            String
+  feedbackEmail          String    @unique
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  feedback               Feedback[]
+  roadmaps               Roadmap[]
+  userId                 String?
+  user                   User?     @relation(fields: [userId], references: [id])
+}
+
+model AppState {
+  id              String   @id
+  currentProjectId String?
+  updatedAt       DateTime @updatedAt
+  userId          String   @default("")
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Feedback {
+  id          String   @id @default(cuid())
+  subject     String
+  content     String
+  sender      String?
+  isUserWritten Boolean @default(false)
+  receivedAt  DateTime @default(now())
+  isImportant Boolean  @default(false)
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id             String    @id @default(cuid())
+  name           String?
+  email          String    @unique
+  password       String
+  avatar         String?
+  preferredModel String?   @default("gpt-4o-mini")
+  projects       Project[]
+  appStates      AppState[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Roadmap {
+  id        String   @id @default(cuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  phases    String   // JSON string of RoadmapPhase[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Phase     Phase[]
+}
+
+model Phase {
+  id        String   @id @default(cuid())
+  roadmapId String
+  roadmap   Roadmap  @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+  backlog   Backlog?
+}
+
+model Backlog {
+  id        String   @id @default(cuid())
+  phaseId   String   @unique
+  phase     Phase    @relation(fields: [phaseId], references: [id], onDelete: Cascade)
+  items     String   // JSON string of backlog items
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+} 

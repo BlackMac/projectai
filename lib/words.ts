@@ -1,0 +1,22 @@
+export const words = [
+  'swift', 'bright', 'calm', 'deep', 'easy',
+  'fast', 'good', 'high', 'just', 'kind',
+  'light', 'mild', 'neat', 'open', 'pure',
+  'quick', 'rich', 'soft', 'true', 'warm',
+  'wise', 'young', 'brave', 'clear', 'free',
+  'fresh', 'happy', 'lucky', 'magic', 'prime',
+  'royal', 'sharp', 'smart', 'solid', 'sound',
+  'spark', 'storm', 'style', 'super', 'sweet',
+  'think', 'trust', 'unity', 'value', 'vital',
+  'wave', 'whole', 'worth', 'yield', 'zesty',
+  'agile', 'bloom', 'craft', 'dream', 'eager',
+  'focus', 'grace', 'heart', 'ideal', 'jolly',
+  'knack', 'learn', 'merit', 'noble', 'orbit',
+  'peace', 'quest', 'reach', 'skill', 'trace',
+  'urban', 'vigor', 'world', 'yield', 'zenith',
+  'amber', 'bliss', 'charm', 'dance', 'earth',
+  'flame', 'glow', 'honor', 'ivory', 'jade',
+  'kite', 'lotus', 'mirth', 'north', 'oasis',
+  'pulse', 'quill', 'river', 'sage', 'tiger',
+  'unity', 'verse', 'wings', 'yoke', 'zeal'
+];
